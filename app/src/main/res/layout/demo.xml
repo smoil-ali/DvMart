@@ -14,11 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#414141"
+            android:background="@color/MainColor"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:gravity="center"
-            android:elevation="5dp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +39,7 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
+            android:elevation="1dp"
             >
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"

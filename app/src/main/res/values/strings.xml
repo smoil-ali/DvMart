@@ -24,4 +24,6 @@
     <string name="login_with_otp">LOGIN with OTP</string>
     <string name="facebook">FACEBOOK</string>
     <string name="create_an_account"><u>CREATE AN ACCOUNT</u></string>
+
+    <string name="old_price"><strike>old price</strike></string>
 </resources>

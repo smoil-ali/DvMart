@@ -1,5 +1,6 @@
 package com.cgit.dvmart.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,10 @@ import java.util.List;
 
 public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
+    Activity context;
     List<Section> sections;
 
-    public SectionAdapter(Context context, List<Section> sections) {
+    public SectionAdapter(Activity context, List<Section> sections) {
         this.context = context;
         this.sections = sections;
     }
@@ -53,7 +54,9 @@ public class SectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public void bindView(Section section){
             binding.sectionName.setText(section.getSectionLabel());
             GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+            binding.sectionItemRv.setHasFixedSize(true);
             binding.sectionItemRv.setLayoutManager(gridLayoutManager);
+            binding.sectionItemRv.setNestedScrollingEnabled(false);
             SectionItemAdapter sectionItemAdapter = new SectionItemAdapter(context,section.getItemArrayList());
             binding.sectionItemRv.setAdapter(sectionItemAdapter);
         }
