@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cgit.dvmart.Adapters.HomeAdapter;
 import com.cgit.dvmart.Adapters.ShopAdapter;
+import com.cgit.dvmart.Adapters.ShopDataAdapter;
 import com.cgit.dvmart.Model.Shop;
+import com.cgit.dvmart.Model.ShopData;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.FragmentShopBinding;
 
@@ -25,13 +28,25 @@ public class ShopFragment extends Fragment {
 
     final String TAG = ShopFragment.class.getSimpleName();
     FragmentShopBinding binding;
-    List<Shop> shopList = new ArrayList<>();
-    ShopAdapter adapter;
+    List<ShopData> shopList = new ArrayList<>();
+    List<Shop> list = new ArrayList<>();
+    ShopDataAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentShopBinding.inflate(inflater,container,false);
+
+        binding.shopRv.setVisibility(View.GONE);
+        binding.loadingView.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.loadingView.setVisibility(View.GONE);
+                binding.shopRv.setVisibility(View.VISIBLE);
+            }
+        },5000);
 
         setUpRecyclerView();
 
@@ -39,18 +54,20 @@ public class ShopFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.shopRv.setHasFixedSize(true);
-        binding.shopRv.setLayoutManager(gridLayoutManager);
-        adapter = new ShopAdapter(getContext(),loadData());
+        binding.shopRv.setLayoutManager(linearLayoutManager);
+        adapter = new ShopDataAdapter(getContext(),loadData());
         binding.shopRv.setAdapter(adapter);
     }
 
-    private List<Shop> loadData(){
+    private List<ShopData> loadData(){
 
+        shopList.add(new ShopData());
         Uri Pic1uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic1");
         Uri Pic2uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic2");
         Uri Pic3uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic3");
+
 
         Shop shop = new Shop();
         shop.setImageUri(Pic1uri);
@@ -59,7 +76,7 @@ public class ShopFragment extends Fragment {
         shop.setmCategoryName("Category1");
 
 
-        shopList.add(shop);
+        list.add(shop);
 
         Shop shop1 = new Shop();
         shop1.setImageUri(Pic2uri);
@@ -67,15 +84,19 @@ public class ShopFragment extends Fragment {
         shop1.setDescription("bla bla bla blab bal bbbbbbbbbbbbbbbbb");
         shop1.setPrice("5000");
         shop1.setDiscountPrice("-10");
-        shopList.add(shop1);
+        list.add(shop1);
 
         Shop shop2 = new Shop();
         shop2.setImageUri(Pic3uri);
         shop2.setmCategoryName("Category3");
         shop2.setProduct(false);
         shop2.setDiscountPrice("100");
-        shopList.add(shop2);
+        list.add(shop2);
 
+        ShopData shopData = new ShopData();
+        shopData.setShopList(list);
+        shopData.setSearch(false);
+        shopList.add(shopData);
         return shopList;
     }
 }
