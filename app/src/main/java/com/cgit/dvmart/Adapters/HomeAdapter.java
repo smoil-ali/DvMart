@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cgit.dvmart.Model.Data;
 import com.cgit.dvmart.Model.Section;
 import com.cgit.dvmart.Model.SliderItem;
+import com.cgit.dvmart.databinding.SearchLayoutBinding;
 import com.cgit.dvmart.databinding.SectionHolderBinding;
 import com.cgit.dvmart.databinding.SectionLayoutBinding;
 import com.cgit.dvmart.databinding.SliderLayoutBinding;
@@ -21,6 +22,7 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -28,6 +30,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     final  String TAG = HomeAdapter.class.getSimpleName();
     final int VIEW_TYPE_SLIDER=1;
     final int VIEW_TYPE_SECTION=2;
+    final int VIEW_SEARCH_TYPE = 3;
     Activity activity;
     List<Data> dataList ;
 
@@ -53,6 +56,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 SectionHolderBinding sectionLayoutBinding = SectionHolderBinding.inflate(inflater,parent,false);
                  mViewHolder = new SectionHolder(sectionLayoutBinding);
                  break;
+            case 3:
+                SearchLayoutBinding searchHolder = SearchLayoutBinding.inflate(inflater,parent,false);
+                mViewHolder = new SearchHolder(searchHolder);
+                break;
         }
         return mViewHolder;
     }
@@ -66,6 +73,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case 2:
                 ((SectionHolder)holder).mBind(dataList.get(position).getmSection());
                 break;
+            case 3:
+                ((SearchHolder)holder).mBind();
         }
     }
 
@@ -83,6 +92,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         if (dataList.get(position).getmSection() != null){
             type = VIEW_TYPE_SECTION;
+            return type;
+        }
+        if (dataList.get(position).isSearch()){
+            type = VIEW_SEARCH_TYPE;
             return type;
         }
         return type;
@@ -127,6 +140,18 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             binding.sectionRv.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
             binding.sectionRv.setLayoutManager(linearLayoutManager);
+
+        }
+    }
+
+    private class SearchHolder extends RecyclerView.ViewHolder {
+        SearchLayoutBinding binding;
+        public SearchHolder(SearchLayoutBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        private void mBind(){
 
         }
     }

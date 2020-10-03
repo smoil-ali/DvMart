@@ -6,7 +6,15 @@ public class Data {
     private List<SliderItem> mSliderItem;
     private List<OfferPoster> mOfferPoster;
     private List<Section> mSection;
+    private boolean Search=true;
 
+    public boolean isSearch() {
+        return Search;
+    }
+
+    public void setSearch(boolean search) {
+        Search = search;
+    }
 
     public List<SliderItem> getmSliderItem() {
         return mSliderItem;

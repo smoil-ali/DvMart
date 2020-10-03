@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void getData(){
+        dataList.add(new Data());
         Data sliderData = new Data();
         sliderData.setmSliderItem(loadSliderItem());
         dataList.add(sliderData);

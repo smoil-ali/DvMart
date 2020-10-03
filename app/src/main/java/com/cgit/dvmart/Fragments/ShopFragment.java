@@ -1,66 +1,81 @@
 package com.cgit.dvmart.Fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cgit.dvmart.Adapters.HomeAdapter;
+import com.cgit.dvmart.Adapters.ShopAdapter;
+import com.cgit.dvmart.Model.Shop;
 import com.cgit.dvmart.R;
+import com.cgit.dvmart.databinding.FragmentShopBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShopFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class ShopFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ShopFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShopFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, String param2) {
-        ShopFragment fragment = new ShopFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    final String TAG = ShopFragment.class.getSimpleName();
+    FragmentShopBinding binding;
+    List<Shop> shopList = new ArrayList<>();
+    ShopAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop, container, false);
+
+        binding = FragmentShopBinding.inflate(inflater,container,false);
+
+        setUpRecyclerView();
+
+        return binding.getRoot();
+    }
+
+    private void setUpRecyclerView() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        binding.shopRv.setHasFixedSize(true);
+        binding.shopRv.setLayoutManager(gridLayoutManager);
+        adapter = new ShopAdapter(getContext(),loadData());
+        binding.shopRv.setAdapter(adapter);
+    }
+
+    private List<Shop> loadData(){
+
+        Uri Pic1uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic1");
+        Uri Pic2uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic2");
+        Uri Pic3uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic3");
+
+        Shop shop = new Shop();
+        shop.setImageUri(Pic1uri);
+        shop.setProduct(false);
+        shop.setDiscountPrice("70");
+        shop.setmCategoryName("Category1");
+
+
+        shopList.add(shop);
+
+        Shop shop1 = new Shop();
+        shop1.setImageUri(Pic2uri);
+        shop1.setProduct(true);
+        shop1.setDescription("bla bla bla blab bal bbbbbbbbbbbbbbbbb");
+        shop1.setPrice("5000");
+        shop1.setDiscountPrice("-10");
+        shopList.add(shop1);
+
+        Shop shop2 = new Shop();
+        shop2.setImageUri(Pic3uri);
+        shop2.setmCategoryName("Category3");
+        shop2.setProduct(false);
+        shop2.setDiscountPrice("100");
+        shopList.add(shop2);
+
+        return shopList;
     }
 }
