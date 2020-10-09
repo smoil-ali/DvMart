@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_10sdp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/border_file"
+        android:id="@+id/edit_layout"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:drawableEnd="@drawable/ic_arrow_drop_down"
+            android:text="Edit"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="#2196F3"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_gravity="center"
+            >
+        </com.google.android.material.button.MaterialButton>
+        <TextView
+            android:id="@+id/phoneNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            android:drawableStart="@drawable/phone_icon"
+            android:drawablePadding="@dimen/_3sdp"
+            android:text="+92300 7649170"
+            android:textSize="@dimen/_16sdp"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNo"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="hammadbpl@gmail.com"
+            android:textSize="@dimen/_16sdp"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/prefer_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/edit_layout"
+            app:layout_constraintStart_toStartOf="@+id/edit_layout"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="PREFERRED PAYMENT METHODS"
+            android:textSize="@dimen/_16sdp"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/prefer_methods_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/prefer_method"
+            app:layout_constraintStart_toStartOf="@+id/prefer_method"
+            android:background="@drawable/border_file"
+
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                >
+                <TextView
+                    android:id="@+id/state_bank_india"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Netbanking-State Bank of India"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:id="@+id/line_1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                >
+                <TextView
+                    android:id="@+id/icici_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Netbanking-ICICI Bank"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:id="@+id/line_2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                >
+                <TextView
+                    android:id="@+id/hdfc_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Netbanking-HDFC Bank"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_16sdp"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+    <TextView
+        android:id="@+id/card_upi_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/prefer_methods_layout"
+        app:layout_constraintStart_toStartOf="@+id/edit_layout"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="CARDS, UPI AND MORE"
+        android:textSize="@dimen/_16sdp"
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/card_upi_more"
+        app:layout_constraintStart_toStartOf="@+id/edit_layout"
+        android:background="@drawable/border_file"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/card_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/card_icon"
+                />
+            <TextView
+                android:id="@+id/card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/card_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Card"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:id="@+id/card_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/card_icon"
+                app:layout_constraintTop_toBottomOf="@+id/card"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Visa, MasterCard, Rupay and More"
+                android:textSize="@dimen/_12sdp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/upi_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/upi_icon"
+                />
+            <TextView
+                android:id="@+id/upi_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/upi_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="UPI/QR"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:id="@+id/upi_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/upi_icon"
+                app:layout_constraintTop_toBottomOf="@+id/upi_qr"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Visa, MasterCard, Rupay and More"
+                android:textSize="@dimen/_12sdp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/netbanking_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/netbanking_icon"
+                />
+            <TextView
+                android:id="@+id/net_banking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/netbanking_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Netbanking"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/netbanking_icon"
+                app:layout_constraintTop_toBottomOf="@+id/net_banking"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="All Indian banks"
+                android:textSize="@dimen/_12sdp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/line3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/wallet_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/wallet_icon"
+                />
+            <TextView
+                android:id="@+id/wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/wallet_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Wallet"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/wallet_icon"
+                app:layout_constraintTop_toBottomOf="@+id/wallet"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Mobikvik and more"
+                android:textSize="@dimen/_12sdp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/line4"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/emi_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/emi_icon"
+                />
+            <TextView
+                android:id="@+id/emi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/emi_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="EMI"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/emi_icon"
+                app:layout_constraintTop_toBottomOf="@+id/emi"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="EMI via Credit and Debit Cards"
+                android:textSize="@dimen/_12sdp"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/line5"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            >
+            <ImageView
+                android:id="@+id/paylater_icon"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/pay_later_icon"
+                />
+            <TextView
+                android:id="@+id/paylater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/paylater_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Pay Later"
+                android:textStyle="bold"
+                android:textSize="@dimen/_16sdp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/paylater_icon"
+                app:layout_constraintTop_toBottomOf="@+id/paylater"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="ICICI Bank PayLater"
+                android:textSize="@dimen/_12sdp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
