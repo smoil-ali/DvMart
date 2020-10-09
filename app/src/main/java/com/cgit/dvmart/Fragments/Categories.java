@@ -55,7 +55,23 @@ public class Categories extends Fragment {
 
     private ArrayList<MervModel> getMervs() {
         ArrayList<MervModel> mervModels = new ArrayList<>();
-        MervModel a1 = new MervModel(0,"a1",false,true,false);
+        MervModel home=new MervModel(0,"HOME",false,false,true);
+        MervModel eshop=new MervModel(0,"ESHOP",false,false,true);
+        MervModel womens = new MervModel(3,"WOMEN'S",false,true,false);
+           MervModel tops=new MervModel(4,"Tops",true,false,false);
+        MervModel west_wear=new MervModel(3,"WESTERN WEAR",false,true,false);
+           MervModel dress=new MervModel(4,"Dress",true,false,false);
+           MervModel women_tshirt=new MervModel(4,"Women T Shrits ",true,false,false);
+        MervModel kurtis=new MervModel(0,"WOMEN'S KURTIS",false,false,true);
+
+        womens.setChildList(new ArrayList<MervModel>());
+        west_wear.setChildList(new ArrayList<MervModel>());
+
+
+        womens.getChildList().add(tops);
+        west_wear.getChildList().add(dress);
+        west_wear.getChildList().add(women_tshirt);
+        /*MervModel a1 = new MervModel(0,"a1",false,true,false);
         MervModel a2 = new MervModel(1,"a2",false,true,false);
         MervModel a3 = new MervModel(2,"a3",false,false,false);
         MervModel b1 = new MervModel(3,"b1",true,true,false);
@@ -88,13 +104,17 @@ public class Categories extends Fragment {
         a2.getChildList().add(b3);
         a2.getChildList().add(b4);
         a2.getChildList().add(b5);
-        a1.getChildList().add(b1);
+        a1.getChildList().add(b1);*/
 
 
-        mervModels.add(a1);
+        /*mervModels.add(a1);
         mervModels.add(a2);
-        mervModels.add(a3);
-
+        mervModels.add(a3);*/
+        mervModels.add(home);
+        mervModels.add(eshop);
+        mervModels.add(womens);
+        mervModels.add(west_wear);
+        mervModels.add(kurtis);
         return mervModels;
     }
 }

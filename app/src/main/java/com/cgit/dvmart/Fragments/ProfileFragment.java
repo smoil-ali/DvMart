@@ -1,5 +1,6 @@
 package com.cgit.dvmart.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cgit.dvmart.Activities.Home;
+import com.cgit.dvmart.Activities.SignUp;
 import com.cgit.dvmart.Listeners.RightSheetCloseListener;
+import com.cgit.dvmart.MainActivity;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.FragmentProfileBinding;
 
@@ -35,6 +39,16 @@ public class ProfileFragment extends Fragment {
             closeSheet();
         });
 
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Home.user="login";
+            }
+        });
+
+        binding.createAccount.setOnClickListener(v -> {
+            startActivity(new Intent(requireContext(), SignUp.class));
+        });
         return binding.getRoot();
     }
 
