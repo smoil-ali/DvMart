@@ -1,6 +1,7 @@
 package com.cgit.dvmart.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cgit.dvmart.Activities.CurrentProduct;
 import com.cgit.dvmart.Model.SectionItem;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.SectionItemBinding;
@@ -55,6 +57,12 @@ public class SectionItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             Glide.with(context).load(section.getImageUri()).placeholder(R.drawable.ic_launcher_background).into(binding.productImage);
             binding.description.setText(section.getmProductName());
             binding.newPrice.setText("₹"+section.getmProductPrice());
+            binding.card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, CurrentProduct.class));
+                }
+            });
         }
     }
 }

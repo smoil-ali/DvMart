@@ -26,4 +26,7 @@
     <string name="create_an_account"><u>CREATE AN ACCOUNT</u></string>
 
     <string name="old_price"><strike>old price</strike></string>
+    <string name="smple_title">Sony MDR-XB450 On-Ear EXTRA BASS Headphones</string>
+    <string name="policy">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.</string>
+    <string name="sample_cashpoint">cash points earned for account signup</string>
 </resources>

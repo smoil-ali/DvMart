@@ -8,8 +8,6 @@
     tools:context=".Fragments.HomeFragment">
 
 
-
-
     <RelativeLayout
         android:visibility="gone"
         android:layout_width="match_parent"
@@ -22,8 +20,6 @@
         <include layout="@layout/home_placeholder"
             />
     </RelativeLayout>
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeRv"
