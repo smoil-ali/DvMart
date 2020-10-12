@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.cgit.dvmart.Fragments.AccountFragment;
 import com.cgit.dvmart.Fragments.CartFragment;
 import com.cgit.dvmart.Fragments.Categories;
 import com.cgit.dvmart.Fragments.HomeFragment;
@@ -40,7 +41,7 @@ import androidx.appcompat.widget.Toolbar;
 public class Home extends AppCompatActivity implements TabLayout.OnTabSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener,
 RightSheetCloseListener{
 
-
+    public static String user=null;
     final String TAG = Home.class.getSimpleName();
     ActivityHomeBinding binding;
     Fragment fragment;
@@ -116,18 +117,33 @@ RightSheetCloseListener{
             case R.id.home:
                 fragment=new HomeFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .replace(binding.container.fragmetContainer.getId(),new HomeFragment()).commit();
+                        .replace(binding.container.fragmetContainer.getId(),fragment).commit();
+
                 break;
             case R.id.shop:
+                fragment=new ShopFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .replace(binding.container.fragmetContainer.getId(),new ShopFragment()).commit();
+                        .replace(binding.container.fragmetContainer.getId(),fragment).commit();
+
                 break;
             case R.id.cart:
+                fragment=new CartFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(binding.container.fragmetContainer.getId(),fragment).commit();
+
                 break;
             case R.id.profile:
-                toggleRightDrawer();
+                if (user==null){
+                    toggleRightDrawer();
+                }else{
+                    fragment=new AccountFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(binding.container.fragmetContainer.getId(),fragment).commit();
+                }
+
                 break;
         }
+
         return true;
     }
 
