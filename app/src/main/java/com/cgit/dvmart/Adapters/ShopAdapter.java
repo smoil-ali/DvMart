@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cgit.dvmart.Model.Shop;
+import com.cgit.dvmart.Model.ShopData;
+import com.cgit.dvmart.databinding.SearchLayoutBinding;
 import com.cgit.dvmart.databinding.ShopItemBinding;
 
 import java.util.List;
@@ -65,4 +67,8 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         }
     }
+
+
+
+
 }

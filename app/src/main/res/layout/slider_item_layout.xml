@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/image"
         android:src="@drawable/pic1"
+        android:scaleType="fitXY"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
