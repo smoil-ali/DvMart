@@ -3,20 +3,16 @@ package com.cgit.dvmart.Adapters;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cgit.dvmart.Model.Shop;
+import com.cgit.dvmart.Model.Product_Categories;
 import com.cgit.dvmart.Model.ShopData;
 import com.cgit.dvmart.databinding.SearchLayoutBinding;
-import com.cgit.dvmart.databinding.SectionHolderBinding;
 import com.cgit.dvmart.databinding.ShopItemContainerBinding;
-import com.cgit.dvmart.databinding.SliderLayoutBinding;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
@@ -78,7 +74,7 @@ public class ShopDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             type = VIEW_DATA;
             return type;
         }
-        if (shopData.get(position).isSearch()){
+        if (true){
             type = VIEW_SEARCH_TYPE;
             return type;
         }
@@ -104,13 +100,13 @@ public class ShopDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             this.binding = binding;
         }
 
-        private void mBind(List<Shop> shop){
-            Log.i(TAG,shop.size()+"");
+        private void mBind(List<Product_Categories> product_categories){
+            Log.i(TAG,product_categories.size()+"");
             ShopAdapter adapter;
             GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2);
             binding.shopContainerRv.setHasFixedSize(true);
             binding.shopContainerRv.setLayoutManager(gridLayoutManager);
-            adapter = new ShopAdapter(context,shop);
+            adapter = new ShopAdapter(context,product_categories);
             binding.shopContainerRv.setAdapter(adapter);
         }
     }
