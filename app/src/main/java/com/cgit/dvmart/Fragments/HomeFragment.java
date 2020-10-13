@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.cgit.dvmart.Model.Section;
 import com.cgit.dvmart.Model.SectionItem;
 import com.cgit.dvmart.Model.SliderItem;
 import com.cgit.dvmart.R;
+import com.cgit.dvmart.ViewModels.ProductsViewModel;
 import com.cgit.dvmart.databinding.FragmentHomeBinding;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -30,6 +32,7 @@ import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.reactivex.internal.operators.observable.ObservableRetryBiPredicate;
 
@@ -43,6 +46,8 @@ public class HomeFragment extends Fragment {
     List<SliderItem> mSliderItem = new ArrayList<>();
     List<Data> dataList = new ArrayList<>();
 
+    ProductsViewModel productsViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +55,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater,container,false);
 
         binding.homeRv.setVisibility(View.GONE);
+
         binding.loadingView.setVisibility(View.VISIBLE);
+        productsViewModel=new ViewModelProvider(requireActivity()).get(ProductsViewModel.class);
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -58,7 +66,7 @@ public class HomeFragment extends Fragment {
                 binding.loadingView.setVisibility(View.GONE);
                 binding.homeRv.setVisibility(View.VISIBLE);
             }
-        },5000);
+        },1000);
 
 
         setUpRecyclerView();
@@ -75,6 +83,8 @@ public class HomeFragment extends Fragment {
         sliderData.setmSliderItem(loadSliderItem());
         dataList.add(sliderData);
         Data sectionData = new Data();
+
+
         sectionData.setmSection(loadSectionItemList());
         dataList.add(sectionData);
         adapter.notifyDataSetChanged();
