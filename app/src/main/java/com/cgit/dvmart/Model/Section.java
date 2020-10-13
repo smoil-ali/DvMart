@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Section {
     private String sectionLabel;
-    private List<SectionItem> itemArrayList;
+    private List<Products> itemArrayList;
 
     public String getSectionLabel() {
         return sectionLabel;
@@ -15,15 +15,15 @@ public class Section {
         this.sectionLabel = sectionLabel;
     }
 
-    public List<SectionItem> getItemArrayList() {
+    public List<Products> getItemArrayList() {
         return itemArrayList;
     }
 
-    public void setItemArrayList(ArrayList<SectionItem> itemArrayList) {
+    public void setItemArrayList(ArrayList<Products> itemArrayList) {
         this.itemArrayList = itemArrayList;
     }
 
-    public Section(String sectionLabel, List<SectionItem> itemArrayList) {
+    public Section(String sectionLabel, List<Products> itemArrayList) {
         this.sectionLabel = sectionLabel;
         this.itemArrayList = itemArrayList;
     }
