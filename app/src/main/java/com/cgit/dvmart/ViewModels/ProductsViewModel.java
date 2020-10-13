@@ -23,7 +23,7 @@ public class ProductsViewModel extends ViewModel {
     final String TAG=ProductsViewModel.class.getSimpleName();
     Apis apis;
     private final MutableLiveData<List<Products>> repos = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> repoLoadError = new MutableLiveData<>();
+    private final MutableLiveData<String> repoLoadError = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
     public ProductsViewModel(){
@@ -34,7 +34,7 @@ public class ProductsViewModel extends ViewModel {
         return repos;
     }
 
-    public MutableLiveData<Boolean> getRepoLoadError() {
+    public MutableLiveData<String> getRepoLoadError() {
         return repoLoadError;
     }
 
@@ -53,7 +53,6 @@ public class ProductsViewModel extends ViewModel {
            public void onResponse(Call<List<Products>> call, Response<List<Products>> response) {
                if (response.isSuccessful()){
                    Log.i(TAG," "+response.body().size());
-                   repoLoadError.setValue(false);
                    repos.setValue(response.body());
                    loading.setValue(false);
                }else{
@@ -63,7 +62,7 @@ public class ProductsViewModel extends ViewModel {
 
            @Override
            public void onFailure(Call<List<Products>> call, Throwable t) {
-                repoLoadError.setValue(true);
+                repoLoadError.setValue(t.getMessage());
                 loading.setValue(false);
                Log.i(TAG," "+t.getMessage());
            }

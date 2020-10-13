@@ -28,6 +28,7 @@ import com.cgit.dvmart.Model.Section;
 import com.cgit.dvmart.Model.SectionItem;
 import com.cgit.dvmart.Model.SliderItem;
 import com.cgit.dvmart.R;
+import com.cgit.dvmart.Utility.Utils;
 import com.cgit.dvmart.ViewModels.ProductsViewModel;
 import com.cgit.dvmart.databinding.FragmentHomeBinding;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -69,16 +70,18 @@ public class HomeFragment extends Fragment {
                 if (!aBoolean){{
                     binding.loadingView.setVisibility(View.GONE);
                     binding.homeRv.setVisibility(View.VISIBLE);
+                    binding.swipeToReferesh.setRefreshing(false);
                 }
 
                 }
             }
         });
 
-        productsViewModel.getRepoLoadError().observe(requireActivity(), new Observer<Boolean>() {
+        productsViewModel.getRepoLoadError().observe(requireActivity(), new Observer<String>() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-
+            public void onChanged(String s) {
+                Utils.showDialog(getContext(),"Error",s);
+                binding.swipeToReferesh.setRefreshing(false);
             }
         });
 
@@ -115,7 +118,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onRefresh() {
                 productsViewModel.fetchProducts();
-                binding.swipeToReferesh.setRefreshing(false);
             }
         });
 
