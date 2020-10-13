@@ -39,7 +39,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.activity = activity;
         this.dataList = dataList;
         if(dataList.size() > 0)
-            Log.i(TAG,""+dataList.get(0).getmSection());
+            Log.i(TAG,"dd"+dataList.get(0).getmSection());
     }
 
     @NonNull

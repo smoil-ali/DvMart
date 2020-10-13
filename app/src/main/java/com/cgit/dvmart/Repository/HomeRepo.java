@@ -17,7 +17,7 @@ public class HomeRepo {
     public HomeRepo() {
     }
 
-    private Single<List<Section>> loadSectionItemList(){
+    /*private Single<List<Section>> loadSectionItemList(){
         Uri Pic1uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic1");
         Uri Pic2uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic2");
         Uri Pic3uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic3");
@@ -30,5 +30,5 @@ public class HomeRepo {
         sectionItemList.add(new SectionItem(Pic5uri,"shirt1","1000"));
         sectionList.add(new Section("Shirts",sectionItemList));
         return (Single<List<Section>>) sectionList;
-    }
+    }*/
 }

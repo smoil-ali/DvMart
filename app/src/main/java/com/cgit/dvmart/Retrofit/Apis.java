@@ -1,6 +1,7 @@
 package com.cgit.dvmart.Retrofit;
 
 import com.cgit.dvmart.Model.Product_Categories;
+import com.cgit.dvmart.Model.Products;
 
 import java.util.List;
 
@@ -13,4 +14,12 @@ public interface Apis {
     //Category product Api
     @GET("product_categories.php?per_page=100&order=desc&parent=0")
     Call<List<Product_Categories>> getProductCategories();
+
+    //http://developers.cgitsoft.com/dvmart/products.php
+    @GET("products.php")
+    Call<List<Products>> getAllProducts();
+
+
+
+
 }
