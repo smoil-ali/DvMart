@@ -1,24 +1,23 @@
 package com.cgit.dvmart.Fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cgit.dvmart.Adapters.HomeAdapter;
-import com.cgit.dvmart.Adapters.ShopAdapter;
 import com.cgit.dvmart.Adapters.ShopDataAdapter;
-import com.cgit.dvmart.Model.Shop;
+import com.cgit.dvmart.Model.Product_Categories;
 import com.cgit.dvmart.Model.ShopData;
-import com.cgit.dvmart.R;
+import com.cgit.dvmart.Utility.Utils;
+import com.cgit.dvmart.ViewModels.ShopViewModel;
 import com.cgit.dvmart.databinding.FragmentShopBinding;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,26 +28,56 @@ public class ShopFragment extends Fragment {
     final String TAG = ShopFragment.class.getSimpleName();
     FragmentShopBinding binding;
     List<ShopData> shopList = new ArrayList<>();
-    List<Shop> list = new ArrayList<>();
     ShopDataAdapter adapter;
+
+    ShopViewModel shopViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentShopBinding.inflate(inflater,container,false);
 
-        binding.shopRv.setVisibility(View.GONE);
-        binding.loadingView.setVisibility(View.VISIBLE);
 
-        new Handler().postDelayed(new Runnable() {
+        shopViewModel = new ViewModelProvider(getActivity()).get(ShopViewModel.class);
+        shopViewModel.getLoading().observe(requireActivity(), new Observer<Boolean>() {
             @Override
-            public void run() {
-                binding.loadingView.setVisibility(View.GONE);
-                binding.shopRv.setVisibility(View.VISIBLE);
+            public void onChanged(Boolean aBoolean) {
+                Log.i(TAG,"loading "+aBoolean);
+                if (!aBoolean){
+                    binding.loadingView.setVisibility(View.GONE);
+                }
             }
-        },5000);
+        });
 
-        setUpRecyclerView();
+        shopViewModel.getRepoLoadError().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(String error) {
+                Log.i(TAG,error);
+                Utils.showDialog(getContext(),"Error",error);
+            }
+        });
+
+        shopViewModel.getRepos().observe(requireActivity(), new Observer<List<Product_Categories>>() {
+            @Override
+            public void onChanged(List<Product_Categories> product_categories_list) {
+                Log.i(TAG,"data "+ product_categories_list.size());
+                shopList.clear();
+                ShopData shopData1 = new ShopData();
+                shopData1.setSearch(true);
+                shopData1.setShopList(null);
+                shopList.add(shopData1);
+                ShopData shopData2 = new ShopData();
+                shopData2.setSearch(false);
+                shopData2.setShopList(product_categories_list);
+                shopList.add(shopData2);
+                setUpRecyclerView();
+            }
+        });
+
+
+
+
 
         return binding.getRoot();
     }
@@ -57,46 +86,9 @@ public class ShopFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.shopRv.setHasFixedSize(true);
         binding.shopRv.setLayoutManager(linearLayoutManager);
-        adapter = new ShopDataAdapter(getContext(),loadData());
+        adapter = new ShopDataAdapter(getContext(),shopList);
         binding.shopRv.setAdapter(adapter);
     }
 
-    private List<ShopData> loadData(){
 
-        shopList.add(new ShopData());
-        Uri Pic1uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic1");
-        Uri Pic2uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic2");
-        Uri Pic3uri = Uri.parse("android.resource://com.cgit.dvmart/drawable/pic3");
-
-
-        Shop shop = new Shop();
-        shop.setImageUri(Pic1uri);
-        shop.setProduct(false);
-        shop.setDiscountPrice("70");
-        shop.setmCategoryName("Category1");
-
-
-        list.add(shop);
-
-        Shop shop1 = new Shop();
-        shop1.setImageUri(Pic2uri);
-        shop1.setProduct(true);
-        shop1.setDescription("bla bla bla blab bal bbbbbbbbbbbbbbbbb");
-        shop1.setPrice("5000");
-        shop1.setDiscountPrice("-10");
-        list.add(shop1);
-
-        Shop shop2 = new Shop();
-        shop2.setImageUri(Pic3uri);
-        shop2.setmCategoryName("Category3");
-        shop2.setProduct(false);
-        shop2.setDiscountPrice("100");
-        list.add(shop2);
-
-        ShopData shopData = new ShopData();
-        shopData.setShopList(list);
-        shopData.setSearch(false);
-        shopList.add(shopData);
-        return shopList;
-    }
 }

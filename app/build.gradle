@@ -27,7 +27,7 @@ android {
     }
 }
 
-def retrofitVersion = '2.3.0'
+def retrofitVersion = '2.5.0'
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -68,4 +68,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    //android life cycle
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 }
