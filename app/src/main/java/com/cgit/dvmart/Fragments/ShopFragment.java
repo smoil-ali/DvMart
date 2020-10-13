@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.cgit.dvmart.Adapters.ShopDataAdapter;
 import com.cgit.dvmart.Model.Product_Categories;
@@ -18,6 +19,7 @@ import com.cgit.dvmart.Utility.Utils;
 import com.cgit.dvmart.ViewModels.ShopViewModel;
 import com.cgit.dvmart.databinding.FragmentShopBinding;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,7 @@ public class ShopFragment extends Fragment {
 
         binding = FragmentShopBinding.inflate(inflater,container,false);
 
-
+        setUpRecyclerView();
         shopViewModel = new ViewModelProvider(getActivity()).get(ShopViewModel.class);
         shopViewModel.getLoading().observe(requireActivity(), new Observer<Boolean>() {
             @Override
@@ -46,6 +48,7 @@ public class ShopFragment extends Fragment {
                 Log.i(TAG,"loading "+aBoolean);
                 if (!aBoolean){
                     binding.loadingView.setVisibility(View.GONE);
+                    binding.refresher.setRefreshing(false);
                 }
             }
         });
@@ -54,6 +57,7 @@ public class ShopFragment extends Fragment {
             @Override
             public void onChanged(String error) {
                 Log.i(TAG,error);
+                binding.refresher.setRefreshing(false);
                 Utils.showDialog(getContext(),"Error",error);
             }
         });
@@ -71,10 +75,17 @@ public class ShopFragment extends Fragment {
                 shopData2.setSearch(false);
                 shopData2.setShopList(product_categories_list);
                 shopList.add(shopData2);
-                setUpRecyclerView();
+                adapter.notifyDataSetChanged();
+                binding.refresher.setRefreshing(false);
             }
         });
 
+        binding.refresher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                shopViewModel.refresh();
+            }
+        });
 
 
 

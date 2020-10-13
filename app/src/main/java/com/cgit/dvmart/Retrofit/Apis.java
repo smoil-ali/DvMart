@@ -9,8 +9,8 @@ import retrofit2.http.GET;
 
 public interface Apis {
 
-    //http://developers.cgitsoft.com/dvmart/product_categories.php
+    //http://developers.cgitsoft.com/dvmart/product_categories.php?per_page=100&order=desc&parent=0
     //Category product Api
-    @GET("product_categories.php")
+    @GET("product_categories.php?per_page=100&order=desc&parent=0")
     Call<List<Product_Categories>> getProductCategories();
 }

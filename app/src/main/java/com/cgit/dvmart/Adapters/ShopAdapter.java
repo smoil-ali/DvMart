@@ -52,13 +52,16 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void mBind(Product_Categories product_categories){
+            String temp;
             Glide.with(context).load(product_categories.getImage().getSrc()).into(binding.image);
             if (false){
                 binding.product.setVisibility(View.VISIBLE);
 
             }else {
                 binding.category.setVisibility(View.VISIBLE);
-                binding.categoryName.setText(product_categories.getName());
+                temp = product_categories.getName();
+                temp.replace("&amp;","");
+                binding.categoryName.setText(temp);
                 binding.cartFavContainer.setVisibility(View.GONE);
                 binding.discountContainer.setVisibility(View.GONE);
             }

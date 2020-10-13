@@ -3,12 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.Menu">
 
-    <com.hamedrahimvand.merv.MervView
-        android:id="@+id/mervView"
+
+
+    <RelativeLayout
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        >
+        <include layout="@layout/category_placeholder"
+            />
+    </RelativeLayout>
+
+        <com.hamedrahimvand.merv.MervView
+            android:id="@+id/mervView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/refreshImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_refresh_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/refreshText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try Again"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintTop_toBottomOf="@id/refreshImage"
+        app:layout_constraintLeft_toLeftOf="@id/refreshImage"
+        app:layout_constraintRight_toRightOf="@id/refreshImage"
+        />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

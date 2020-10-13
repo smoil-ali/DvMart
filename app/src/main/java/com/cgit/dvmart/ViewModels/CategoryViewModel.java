@@ -2,8 +2,8 @@ package com.cgit.dvmart.ViewModels;
 
 import android.util.Log;
 
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.cgit.dvmart.Model.Product_Categories;
 import com.cgit.dvmart.Retrofit.Apis;
@@ -15,14 +15,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShopViewModel extends ViewModel {
+public class CategoryViewModel extends ViewModel {
 
-    final String TAG = ShopViewModel.class.getSimpleName();
+    final String TAG = CategoryViewModel.class.getSimpleName();
     private final MutableLiveData<List<Product_Categories>> repos = new MutableLiveData<>();
     private final MutableLiveData<String> repoLoadError = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
-    public ShopViewModel() {
+    public CategoryViewModel() {
         fetchData();
     }
 
@@ -41,6 +41,7 @@ public class ShopViewModel extends ViewModel {
     public void refresh(){
         fetchData();
     }
+
 
     private void fetchData(){
         loading.setValue(true);

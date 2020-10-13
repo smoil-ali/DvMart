@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ShopFragment">
 
+
         <RelativeLayout
             android:id="@+id/loadingView"
             android:layout_width="match_parent"
@@ -15,11 +16,20 @@
                     />
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/shopRv"
-            />
+            android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/shopRv"
+                    />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
 
 
 
