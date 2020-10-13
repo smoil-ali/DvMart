@@ -27,6 +27,8 @@ android {
     }
 }
 
+def retrofitVersion = '2.3.0'
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -60,4 +62,10 @@ dependencies {
 
     //Simmer effect
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //Retrofit
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 }
