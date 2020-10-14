@@ -1,6 +1,8 @@
 package com.cgit.dvmart.Model;
 
-public class Dimensions {
+import java.io.Serializable;
+
+public class Dimensions implements Serializable {
 
     private String length;
 

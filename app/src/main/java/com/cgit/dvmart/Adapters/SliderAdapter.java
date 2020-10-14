@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.cgit.dvmart.Model.Image;
 import com.cgit.dvmart.Model.SliderItem;
 import com.cgit.dvmart.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
@@ -20,10 +21,10 @@ import java.util.List;
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH>  {
 
     private Context context;
-    private List<SliderItem> mSliderItems = new ArrayList<>();
+    private List<Image> mSliderItems = new ArrayList<>();
 
 
-    public void renewItems(List<SliderItem> sliderItems) {
+    public void renewItems(List<Image> sliderItems) {
         this.mSliderItems = sliderItems;
     }
 
@@ -32,7 +33,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
     }
 
 
-    public SliderAdapter(Context context, List<SliderItem> mSliderItems) {
+    public SliderAdapter(Context context, List<Image> mSliderItems) {
         this.context = context;
         this.mSliderItems = mSliderItems;
     }
@@ -45,10 +46,10 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
 
     @Override
     public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
-        SliderItem sliderItem = mSliderItems.get(position);
+        Image sliderItem = mSliderItems.get(position);
 
         Glide.with(viewHolder.itemView)
-                .load(sliderItem.getImageUri())
+                .load(sliderItem.getSrc())
                 .fitCenter()
                 .into(viewHolder.imageViewBackground);
 

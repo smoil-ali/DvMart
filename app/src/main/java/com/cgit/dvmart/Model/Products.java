@@ -1,8 +1,12 @@
 package com.cgit.dvmart.Model;
 
+import android.provider.MediaStore;
+
+
+import java.io.Serializable;
 import java.util.List;
 
-public class Products {
+public class Products implements Serializable {
     private int id;
 
     private String name;
@@ -75,7 +79,7 @@ public class Products {
 
     private boolean manage_stock;
 
-    private int stock_quantity;
+    private String stock_quantity;
 
     private String stock_status;
 
@@ -115,7 +119,7 @@ public class Products {
 
     private String purchase_note;
 
-    private List<String> categories;
+    private List<prod_Cat> categories;
 
     private List<Tags> tags;
 
@@ -132,8 +136,6 @@ public class Products {
     private int menu_order;
 
     private List<Meta_data> meta_data;
-
-    private String yoast_head;
 
     public int getId() {
         return id;
@@ -423,11 +425,11 @@ public class Products {
         this.manage_stock = manage_stock;
     }
 
-    public int getStock_quantity() {
+    public String getStock_quantity() {
         return stock_quantity;
     }
 
-    public void setStock_quantity(int stock_quantity) {
+    public void setStock_quantity(String stock_quantity) {
         this.stock_quantity = stock_quantity;
     }
 
@@ -583,11 +585,11 @@ public class Products {
         this.purchase_note = purchase_note;
     }
 
-    public List<String> getCategories() {
+    public List<prod_Cat> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<String> categories) {
+    public void setCategories(List<prod_Cat> categories) {
         this.categories = categories;
     }
 
@@ -653,13 +655,5 @@ public class Products {
 
     public void setMeta_data(List<Meta_data> meta_data) {
         this.meta_data = meta_data;
-    }
-
-    public String getYoast_head() {
-        return yoast_head;
-    }
-
-    public void setYoast_head(String yoast_head) {
-        this.yoast_head = yoast_head;
     }
 }

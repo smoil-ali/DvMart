@@ -75,13 +75,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_16sdp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="10dp"
                     android:text="old price"
                     />
                 <TextView
                     android:id="@+id/new_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:text="new price"
                     android:textSize="@dimen/_16sdp"
                     />
@@ -103,7 +104,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/about_product"
                 app:layout_constraintStart_toStartOf="@+id/about_product"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:text="Delivery time"
+                android:text="Delivery Time is substantially affected due to Covid-19 restrictions"
                 android:textSize="@dimen/_16sdp"
                 />
             <TextView

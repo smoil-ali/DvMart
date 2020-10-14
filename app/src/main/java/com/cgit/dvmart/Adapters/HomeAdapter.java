@@ -111,9 +111,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private void mBind(List<SliderItem> sliderItem){
             SliderView sliderView;
             sliderView = binding.imageSlider;
-
-            SliderAdapter mSlideradapter = new SliderAdapter(activity,sliderItem);
-            sliderView.setSliderAdapter(mSlideradapter);
+            //have to update by usama
+            /*SliderAdapter mSlideradapter = new SliderAdapter(activity,sliderItem);
+            sliderView.setSliderAdapter(mSlideradapter);*/
 
             sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
             sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);

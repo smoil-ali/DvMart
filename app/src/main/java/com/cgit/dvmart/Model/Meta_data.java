@@ -1,6 +1,8 @@
 package com.cgit.dvmart.Model;
 
-public class Meta_data {
+import java.io.Serializable;
+
+public class Meta_data implements Serializable {
     private int id;
 
     private String key;

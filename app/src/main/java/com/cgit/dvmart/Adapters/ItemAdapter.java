@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+import com.cgit.dvmart.Model.Image;
 import com.cgit.dvmart.Model.item;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.CurrentItemBinding;
@@ -20,10 +22,10 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CurrentItemHolder> {
     SliderLayoutBinding binding;
     Context context;
-    List<item> items;
+    List<Image> items;
 
 
-    public ItemAdapter(Context context, List<item> items) {
+    public ItemAdapter(Context context, List<Image> items) {
         this.context = context;
         this.items = items;
     }
@@ -37,7 +39,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CurrentItemHol
 
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.CurrentItemHolder holder, int position) {
-            holder.binding.currentImage.setImageDrawable(ContextCompat.getDrawable(context,items.get(position).getImage()));
+        Glide.with(context).load(items.get(position).getSrc()).into(holder.binding.currentImage);
     }
 
     @Override

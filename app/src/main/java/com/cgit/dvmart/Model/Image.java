@@ -1,6 +1,8 @@
 package com.cgit.dvmart.Model;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable {
     private int id;
 
     private String date_created;
