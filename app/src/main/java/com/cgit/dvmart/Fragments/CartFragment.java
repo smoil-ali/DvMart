@@ -44,5 +44,6 @@ public class CartFragment extends Fragment {
         cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic5,"description","5","$1,700.00","10"));
         cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic1,"description","5","$1,700.00","10"));
         cartAdapter.notifyDataSetChanged();
+
     }
 }

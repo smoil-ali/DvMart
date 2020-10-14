@@ -5,7 +5,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import com.cgit.dvmart.Adapters.ItemAdapter;
 import com.cgit.dvmart.Adapters.SliderAdapter;
 import com.cgit.dvmart.Fragments.CartFragment;
+import com.cgit.dvmart.Model.Cart;
 import com.cgit.dvmart.Model.SliderItem;
 import com.cgit.dvmart.Model.item;
 import com.cgit.dvmart.R;
@@ -33,6 +36,7 @@ public class CurrentProduct extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    ArrayList<Cart> cartArrayList;
 
     private SliderView sliderView;
     private SliderAdapter adapter;
@@ -116,18 +120,19 @@ public class CurrentProduct extends AppCompatActivity {
             }
         });
 
+
+
+        cartArrayList = new ArrayList<>();
+
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name", productName.getText().toString());
-                bundle.putString("oldPrice", oldPrice.getText().toString());
-                bundle.putString("newPrice", newPrice.getText().toString());
-                bundle.putInt("itemImage", items.get(0).getImage());
-                bundle.putString("quantity", counterValue.getText().toString());
-
+               cartData();
 
             }
         });
+    }
+    private void cartData(){
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
     }
 }
