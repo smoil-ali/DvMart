@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,7 +108,7 @@ public class Categories extends Fragment {
 
 
         for (int i=0;i<product_categoriesList.size();i++){
-            MervModel model = new MervModel(i,product_categoriesList.get(i).getName(),false,false,true);
+            MervModel model = new MervModel(i,String.valueOf(Html.fromHtml(product_categoriesList.get(i).getName())),false,false,true);
             mervModels.add(model);
         }
 //

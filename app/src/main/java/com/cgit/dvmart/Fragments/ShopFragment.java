@@ -2,6 +2,8 @@ package com.cgit.dvmart.Fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,8 +41,19 @@ public class ShopFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentShopBinding.inflate(inflater,container,false);
-
         setUpRecyclerView();
+
+
+
+
+
+
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         shopViewModel = new ViewModelProvider(getActivity()).get(ShopViewModel.class);
         shopViewModel.getLoading().observe(requireActivity(), new Observer<Boolean>() {
             @Override
@@ -86,11 +99,6 @@ public class ShopFragment extends Fragment {
                 shopViewModel.refresh();
             }
         });
-
-
-
-
-        return binding.getRoot();
     }
 
     private void setUpRecyclerView() {

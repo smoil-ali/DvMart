@@ -10,6 +10,6 @@ public class Utils {
         new AlertDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK",((dialog, which) -> dialog.dismiss())).show();
+                .setPositiveButton("OK",((dialog, which) -> dialog.dismiss())).create().show();
     }
 }

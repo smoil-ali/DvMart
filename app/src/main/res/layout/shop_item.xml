@@ -145,7 +145,7 @@
                     android:text="hello world!!!"
                     android:maxLines="2"
                     android:ellipsize="end"
-                    android:textSize="@dimen/_16sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@android:color/black"
                     />
 
@@ -156,7 +156,7 @@
                     android:text="price price"
                     android:maxLines="2"
                     android:ellipsize="end"
-                    android:textSize="@dimen/_16sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@android:color/black"
                     />
 
@@ -179,7 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CATEGORY"
-                    android:textSize="@dimen/_20sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
                     />

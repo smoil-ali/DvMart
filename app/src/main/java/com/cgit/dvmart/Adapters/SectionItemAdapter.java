@@ -57,7 +57,7 @@ public class SectionItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         public void bindView(Products section){
 
-            Log.i("imgrul"," "+section.getImages().get(0).getName());
+            Log.i("imgrul"," "+section.getImages().get(0).getTitle());
             Glide.with(context).load(section.getImages().get(0).getSrc()).placeholder(R.drawable.ic_launcher_background).into(binding.productImage);
             binding.description.setText(section.getName());
             binding.newPrice.setText("₹"+section.getPrice());

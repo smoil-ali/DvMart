@@ -1,6 +1,8 @@
 package com.cgit.dvmart.Adapters;
 
 import android.content.Context;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import java.util.List;
 
 public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = ShopAdapter.class.getSimpleName();
     Context context;
     List<Product_Categories> shopList ;
 
@@ -52,16 +55,13 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void mBind(Product_Categories product_categories){
-            String temp;
             Glide.with(context).load(product_categories.getImage().getSrc()).into(binding.image);
             if (false){
                 binding.product.setVisibility(View.VISIBLE);
 
             }else {
                 binding.category.setVisibility(View.VISIBLE);
-                temp = product_categories.getName();
-                temp.replace("&amp;","");
-                binding.categoryName.setText(temp);
+                binding.categoryName.setText(String.valueOf(Html.fromHtml(product_categories.getName())));
                 binding.cartFavContainer.setVisibility(View.GONE);
                 binding.discountContainer.setVisibility(View.GONE);
             }
