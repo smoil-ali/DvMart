@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 
 import com.cgit.dvmart.Adapters.ItemAdapter;
 import com.cgit.dvmart.Adapters.SliderAdapter;
@@ -32,6 +33,7 @@ public class CurrentProduct extends AppCompatActivity {
     private SliderView sliderView;
     private SliderAdapter adapter;
     ActivityCurrentProductBinding binding;
+    int countValue=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,24 @@ public class CurrentProduct extends AppCompatActivity {
         setLowerSlider(products);
         setProductData(products);
 
+        binding.container.btnIncrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.container.incrementDecrementText.setText(String.valueOf(++countValue));
+                Log.d("plusButton", "onClick: button is clicked " );
+            }
+        });
+
+        binding.container.btnDecrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (countValue > 1){
+                    binding.container.incrementDecrementText.setText(String.valueOf(--countValue));
+                    Log.d("minusButton", "onClick: button is clicked " );
+                }
+            }
+        });
+
 
 
     }
@@ -59,7 +79,9 @@ public class CurrentProduct extends AppCompatActivity {
         binding.container.deliveryTime.setText(products.getDate_on_sale_to());
         binding.container.newPrice.setText(Html.fromHtml(products.getPrice_html()));
         binding.container.oldPrice.setText(Html.fromHtml(products.getPrice_html()));
-
+        binding.container.catTitle.setText(products.getCategories().get(0).getName());
+        binding.container.tagTitle.setText(products.getTags().get(0).getName());
+        binding.container.skuTitle.setText(products.getSku());
 
     }
 
@@ -77,7 +99,7 @@ public class CurrentProduct extends AppCompatActivity {
         layoutManager = new GridLayoutManager(this, 1, recyclerView.HORIZONTAL, false);
 
         recyclerView.setLayoutManager(layoutManager);
-
+        Log.i("size iamges list"," "+products.getImages().size());
         mAdapter = new ItemAdapter(this, products.getImages());
         recyclerView.setAdapter(mAdapter);
     }
