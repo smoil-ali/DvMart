@@ -1,27 +1,30 @@
 package com.cgit.dvmart.Adapters;
 
 import android.content.Context;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.cgit.dvmart.Model.Shop;
-import com.cgit.dvmart.Model.ShopData;
-import com.cgit.dvmart.databinding.SearchLayoutBinding;
+import com.cgit.dvmart.Model.Product_Categories;
+import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.ShopItemBinding;
 
 import java.util.List;
 
 public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = ShopAdapter.class.getSimpleName();
     Context context;
-    List<Shop> shopList ;
+    List<Product_Categories> shopList ;
 
-    public ShopAdapter(Context context, List<Shop> shopList) {
+    public ShopAdapter(Context context, List<Product_Categories> shopList) {
         this.context = context;
         this.shopList = shopList;
     }
@@ -51,16 +54,14 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.binding = binding;
         }
 
-        public void mBind(Shop shop){
-            Glide.with(context).load(shop.getImageUri()).into(binding.image);
-            if (shop.isProduct()){
+        public void mBind(Product_Categories product_categories){
+            Glide.with(context).load(product_categories.getImage().getSrc()).into(binding.image);
+            if (false){
                 binding.product.setVisibility(View.VISIBLE);
-                binding.description.setText(shop.getDescription());
-                binding.price.setText("₹"+shop.getPrice());
-                binding.descountPrice.setText(shop.getDiscountPrice()+"%");
+
             }else {
                 binding.category.setVisibility(View.VISIBLE);
-                binding.categoryName.setText(shop.getmCategoryName());
+                binding.categoryName.setText(String.valueOf(Html.fromHtml(product_categories.getName())));
                 binding.cartFavContainer.setVisibility(View.GONE);
                 binding.discountContainer.setVisibility(View.GONE);
             }

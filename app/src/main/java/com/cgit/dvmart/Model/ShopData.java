@@ -3,14 +3,14 @@ package com.cgit.dvmart.Model;
 import java.util.List;
 
 public class ShopData {
-    List<Shop> shopList ;
+    List<Product_Categories> shopList ;
     private boolean Search=true;
 
-    public List<Shop> getShopList() {
+    public List<Product_Categories> getShopList() {
         return shopList;
     }
 
-    public void setShopList(List<Shop> shopList) {
+    public void setShopList(List<Product_Categories> shopList) {
         this.shopList = shopList;
     }
 
