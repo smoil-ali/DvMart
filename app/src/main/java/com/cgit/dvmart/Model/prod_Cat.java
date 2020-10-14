@@ -2,7 +2,7 @@ package com.cgit.dvmart.Model;
 
 import java.io.Serializable;
 
-public class Tags implements Serializable {
+public class prod_Cat implements Serializable {
     private int id;
 
     private String name;
