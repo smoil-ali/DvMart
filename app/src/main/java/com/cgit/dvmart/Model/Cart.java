@@ -3,7 +3,7 @@ package com.cgit.dvmart.Model;
 import android.net.Uri;
 
 public class Cart {
-    String itemId;
+    int itemId;
     String itmeName;
     int image;
     String description;
@@ -11,8 +11,10 @@ public class Cart {
     String price;
     String discountPrice;
 
+    public Cart() {
+    }
 
-    public Cart(String itemId, String itmeName, int image, String description, String quantitiy, String price, String discountPrice) {
+    public Cart(int itemId, String itmeName, int image, String description, String quantitiy, String price, String discountPrice) {
         this.itemId = itemId;
         this.itmeName = itmeName;
         this.image = image;
@@ -22,11 +24,11 @@ public class Cart {
         this.discountPrice = discountPrice;
     }
 
-    public String getItemId() {
+    public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(int itemId) {
         this.itemId = itemId;
     }
 

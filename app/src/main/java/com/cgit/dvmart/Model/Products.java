@@ -1,7 +1,5 @@
 package com.cgit.dvmart.Model;
 
-import android.provider.MediaStore;
-
 
 import java.io.Serializable;
 import java.util.List;

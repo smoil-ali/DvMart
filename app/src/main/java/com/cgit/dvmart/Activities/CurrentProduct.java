@@ -4,15 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.cgit.dvmart.Adapters.ItemAdapter;
 import com.cgit.dvmart.Adapters.SliderAdapter;
+import com.cgit.dvmart.Model.Cart;
+import com.cgit.dvmart.Model.CartPrefrences;
 import com.cgit.dvmart.Model.Products;
 import com.cgit.dvmart.Model.SliderItem;
 import com.cgit.dvmart.Model.item;
@@ -30,10 +36,15 @@ public class CurrentProduct extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    Cart cart;
+    Products products;
+    Button btnCart;
+
     private SliderView sliderView;
     private SliderAdapter adapter;
     ActivityCurrentProductBinding binding;
     int countValue=1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +53,9 @@ public class CurrentProduct extends AppCompatActivity {
         setContentView(binding.getRoot());
         recyclerView = findViewById(R.id.recyclerView);
         sliderView = findViewById(R.id.imageSlider);
+        btnCart  = findViewById(R.id.add_to_cart);
 
-        Products products= (Products) getIntent().getExtras().get("product");
+        products= (Products) getIntent().getExtras().get("product");
 
         setUperSlider(products);
         setLowerSlider(products);
@@ -68,8 +80,22 @@ public class CurrentProduct extends AppCompatActivity {
         });
 
 
+        binding.container.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cart cart = new Cart();
+                cart.setItmeName(products.getName());
+                cart.setItemId(products.getId());
+
+
+                CartPrefrences prefrences = new CartPrefrences();
+                prefrences.addCartProduct(CurrentProduct.this,cart);
+            }
+        });
 
     }
+
+
 
     private void setProductData(Products products) {
         binding.container.productTitle.setText(products.getName());
@@ -132,4 +158,6 @@ public class CurrentProduct extends AppCompatActivity {
         sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
         sliderView.startAutoCycle();
     }
+
+
 }
