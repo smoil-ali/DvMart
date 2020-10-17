@@ -14,6 +14,7 @@ import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cgit.dvmart.Adapters.ItemAdapter;
 import com.cgit.dvmart.Adapters.SliderAdapter;
@@ -86,10 +87,14 @@ public class CurrentProduct extends AppCompatActivity {
                 Cart cart = new Cart();
                 cart.setItmeName(products.getName());
                 cart.setItemId(products.getId());
-
+                cart.setPrice(products.getPrice());
+                cart.setDescription(products.getDescription());
+                cart.setQuantitiy(countValue);
+                cart.setDiscountPrice(products.getSale_price());
 
                 CartPrefrences prefrences = new CartPrefrences();
                 prefrences.addCartProduct(CurrentProduct.this,cart);
+                Toast.makeText(CurrentProduct.this,"Product is added to Cart", Toast.LENGTH_LONG).show();
             }
         });
 

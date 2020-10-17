@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.cgit.dvmart.Adapters.CartAdapter;
 import com.cgit.dvmart.Model.Cart;
+import com.cgit.dvmart.Model.CartPrefrences;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.FragmentCartBinding;
 
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class CartFragment extends Fragment {
     FragmentCartBinding binding;
     ArrayList<Cart> cartArrayList;
+    CartAdapter cartAdapter;
 
 
     @Override
@@ -31,19 +33,23 @@ public class CartFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        CartPrefrences prefrences = new CartPrefrences();
+        if (cartArrayList != null && prefrences.getCartProducts(requireContext()) != null) {
+            cartArrayList.addAll(prefrences.getCartProducts(requireContext()));
+            cartAdapter.notifyDataSetChanged();
+        }
+    }
+
     private void setUpRecyclerView() {
         cartArrayList=new ArrayList<>();
-        CartAdapter cartAdapter=new CartAdapter(requireContext(),cartArrayList);
+        cartAdapter=new CartAdapter(requireContext(),cartArrayList);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(requireContext());
         binding.cartList.setLayoutManager(linearLayoutManager);
         binding.cartList.setAdapter(cartAdapter);
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic1,"description","5","$1,700.00","10"));
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic2,"description","5","$1,700.00","10"));
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic3,"description","5","$1,700.00","10"));
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic4,"description","5","$1,700.00","10"));
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic5,"description","5","$1,700.00","10"));
-        cartArrayList.add(new Cart("1",getString(R.string.smple_title),R.drawable.pic1,"description","5","$1,700.00","10"));
-        cartAdapter.notifyDataSetChanged();
+
 
     }
 }

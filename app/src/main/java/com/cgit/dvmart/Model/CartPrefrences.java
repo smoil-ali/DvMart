@@ -3,6 +3,7 @@ package com.cgit.dvmart.Model;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.cgit.dvmart.Fragments.CartFragment;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class CartPrefrences {
         Gson gson = new Gson();
         String jsonCartProducts = gson.toJson(cartProducts);
         editor.putString(CartProduct, jsonCartProducts);
-        editor.commit();
+        editor.apply();
 
     }
 
@@ -41,8 +42,17 @@ public class CartPrefrences {
 
     public void removeCartProduct(Context context, Cart cart) {
         ArrayList<Cart> cartProducts = getCartProducts(context);
+
         if (cartProducts != null) {
             cartProducts.remove(cart);
+            for (int i = cartProducts.size()-1; i>= 0 ; i-- ){
+                Cart obj = cartProducts.get(i);
+                if(obj.itemId == cart.itemId){
+                    cartProducts.remove(cartProducts.get(i));
+
+
+                }
+        }
             saveCartProducts(context, cartProducts);
         }
     }
@@ -64,7 +74,5 @@ public class CartPrefrences {
 
         return (ArrayList<Cart>) cartProducts;
     }
-
-
 }
 

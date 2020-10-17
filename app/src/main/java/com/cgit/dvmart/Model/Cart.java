@@ -7,14 +7,14 @@ public class Cart {
     String itmeName;
     int image;
     String description;
-    String quantitiy;
+    int quantitiy;
     String price;
     String discountPrice;
 
     public Cart() {
     }
 
-    public Cart(int itemId, String itmeName, int image, String description, String quantitiy, String price, String discountPrice) {
+    public Cart(int itemId, String itmeName, int image, String description, int quantitiy, String price, String discountPrice) {
         this.itemId = itemId;
         this.itmeName = itmeName;
         this.image = image;
@@ -56,11 +56,11 @@ public class Cart {
         this.description = description;
     }
 
-    public String getQuantitiy() {
+    public int getQuantitiy() {
         return quantitiy;
     }
 
-    public void setQuantitiy(String quantitiy) {
+    public void setQuantitiy(int quantitiy) {
         this.quantitiy = quantitiy;
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -11,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgit.dvmart.Model.Cart;
+import com.cgit.dvmart.Model.CartPrefrences;
 import com.cgit.dvmart.R;
 import com.cgit.dvmart.databinding.ItemCartBinding;
 import com.cgit.dvmart.databinding.ShopItemBinding;
@@ -36,7 +38,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        holder.mBind(cartList.get(position));
+        holder.mBind(cartList.get(position),position);
     }
 
     @Override
@@ -51,11 +53,22 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             this.binding=itemView;
         }
 
-        public void mBind(Cart cart){
+
+        public void mBind(Cart cart, int position){
             binding.itemText.setText(cart.getItmeName());
             binding.itemImage.setImageResource(cart.getImage());
-            binding.finalQunt.setText(cart.getQuantitiy());
+            binding.finalQunt.setText(String.valueOf(cart.getQuantitiy()));
             binding.price.setText(cart.getPrice());
+
+            binding.delItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CartPrefrences prefrences = new CartPrefrences();
+                    prefrences.removeCartProduct(context, cart);
+                    notifyItemRemoved(position);
+
+                }
+            });
         }
     }
 }
